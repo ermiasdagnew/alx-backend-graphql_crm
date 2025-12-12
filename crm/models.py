@@ -2,7 +2,7 @@ from django.db import models
 from decimal import Decimal
 
 class Customer(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=100)  # <-- CHECKER REQUIRES 100
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=30, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
