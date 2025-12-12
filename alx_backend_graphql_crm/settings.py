@@ -1,21 +1,12 @@
-"""
-Django settings for alx_backend_graphql project.
-"""
-
+# alx_backend_graphql/settings.py
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "replace-this-with-a-secure-key"
-
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
-
-# -------------------------
-# Application definition
-# -------------------------
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -24,10 +15,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # Required apps for task
+    # Required for Task 0
     "graphene_django",
-    "django_filters",
     "crm",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -60,10 +51,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "alx_backend_graphql.wsgi.application"
 
-
-# -------------------------
-# Database
-# -------------------------
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -71,47 +58,13 @@ DATABASES = {
     }
 }
 
-
-# -------------------------
-# Password validation
-# -------------------------
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
-
-
-# -------------------------
-# Internationalization
-# -------------------------
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# -------------------------
-# Static files
-# -------------------------
 STATIC_URL = "static/"
 
-
-# -------------------------
-# Graphene configuration
-# -------------------------
 GRAPHENE = {
     "SCHEMA": "alx_backend_graphql.schema.schema"
 }
