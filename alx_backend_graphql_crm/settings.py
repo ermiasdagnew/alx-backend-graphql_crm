@@ -1,13 +1,21 @@
-import os
+"""
+Django settings for alx_backend_graphql project.
+"""
+
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "replace-me-with-a-secure-key")
+SECRET_KEY = "replace-this-with-a-secure-key"
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+# -------------------------
+# Application definition
+# -------------------------
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -16,11 +24,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # Third-party
+    # Required apps for task
     "graphene_django",
     "django_filters",
-
-    # Local apps
     "crm",
 ]
 
@@ -34,24 +40,30 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "alx_backend_graphql_crm.urls"
+ROOT_URLCONF = "alx_backend_graphql.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [],
         "APP_DIRS": True,
-        "OPTIONS": {"context_processors": [
-            "django.template.context_processors.debug",
-            "django.template.context_processors.request",
-            "django.contrib.auth.context_processors.auth",
-            "django.contrib.messages.context_processors.messages",
-        ]},
-    }
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
 ]
 
-WSGI_APPLICATION = "alx_backend_graphql_crm.wsgi.application"
+WSGI_APPLICATION = "alx_backend_graphql.wsgi.application"
 
+
+# -------------------------
+# Database
+# -------------------------
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -59,14 +71,49 @@ DATABASES = {
     }
 }
 
-AUTH_PASSWORD_VALIDATORS = []
 
+# -------------------------
+# Password validation
+# -------------------------
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
+]
+
+
+# -------------------------
+# Internationalization
+# -------------------------
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = "Africa/Addis_Ababa"
-USE_I18N = True
-USE_TZ = True
-STATIC_URL = "/static/"
 
+TIME_ZONE = "UTC"
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+# -------------------------
+# Static files
+# -------------------------
+STATIC_URL = "static/"
+
+
+# -------------------------
+# Graphene configuration
+# -------------------------
 GRAPHENE = {
-    "SCHEMA": "alx_backend_graphql_crm.schema.schema"
+    "SCHEMA": "alx_backend_graphql.schema.schema"
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
