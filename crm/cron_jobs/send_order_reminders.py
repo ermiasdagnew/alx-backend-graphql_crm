@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from gql import gql, Client
 from gql.transport.requests import RequestsHTTPTransport
 
-LOG_FILE = "/tmp/orderreminderslog.txt"
+LOG_FILE = "/tmp/order_reminders_log.txt"
 
 # GraphQL client setup
 transport = RequestsHTTPTransport(
