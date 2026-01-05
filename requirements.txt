@@ -1,3 +1,5 @@
 Django>=4.2
-graphene-django>=3.0
-django-filter>=23.0
+graphene-django
+gql
+requests
+django-crontab
