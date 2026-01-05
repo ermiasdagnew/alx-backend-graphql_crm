@@ -10,11 +10,24 @@ INSTALLED_APPS = [
     # your apps
     'crm',
 
-    # Celery Beat
+    # Cron and Celery apps
+    'django_crontab',        # <-- must be literally like this
     'django_celery_beat',
 ]
 
+# ========================
+# django-crontab jobs
+# ========================
+CRONJOBS = [
+    # Heartbeat every 5 minutes
+    ('*/5 * * * *', 'crm.cron.log_crm_heartbeat'),
+    # Low stock updates every 12 hours
+    ('0 */12 * * *', 'crm.cron.update_low_stock'),
+]
+
+# ========================
 # Celery configuration
+# ========================
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 from celery.schedules import crontab
