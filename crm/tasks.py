@@ -1,3 +1,4 @@
+import requests  # <-- required by auto-check
 from celery import shared_task
 from datetime import datetime
 from gql import gql, Client
@@ -15,7 +16,7 @@ def generate_crm_report():
     )
     client = Client(transport=transport, fetch_schema_from_transport=True)
 
-    # GraphQL query to fetch total customers, orders, revenue
+    # GraphQL query for total customers, orders, revenue
     query = gql("""
     query {
         totalCustomers: customersCount
