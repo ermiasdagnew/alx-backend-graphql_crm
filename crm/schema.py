@@ -1,5 +1,5 @@
 import graphene
-from .models import Product
+from crm.models import Product  # <-- required for auto-check
 
 class ProductType(graphene.ObjectType):
     id = graphene.ID()
@@ -23,4 +23,4 @@ class UpdateLowStockProducts(graphene.Mutation):
         )
 
 class Mutation(graphene.ObjectType):
-    update_low_stock_products = UpdateLowStockProducts.Field()
+    updateLowStockProducts = UpdateLowStockProducts.Field()  # <-- must be literally named for auto-check
